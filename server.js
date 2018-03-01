@@ -54,7 +54,8 @@ pete.doTest("aa");
 let mod1 = new mod();
 
 mod1.on("RecordRetrieved", (data)=>{
-    console.log("mod1 has got data back:" + data);
+    console.log(`
+        mod1 has got data back:${data}`);
 });
 
 mod1.openRecord("id1234");
