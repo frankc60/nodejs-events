@@ -29,8 +29,8 @@ const Student = function(name) {
         console.log(`doing the '${testName}' test!`);
         //emit on this method.
         this.emit("grade", 96);
-    }
-}
+    };
+};
 
 //give Student object event emitters methods.
 util.inherits(Student, events.EventEmitter);
