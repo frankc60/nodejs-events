@@ -45,6 +45,10 @@ pete.on("grade", (grade) => {
     and got graded with a '${grade}' mark.`);
 });
 
+//multiple .on method
+pete.on("grade", (grade) => {
+    console.log(`is '${grade}' a good mark?`);
+});
 
 //call method from object Parent (function)
 pete.doTest("aa");
@@ -57,6 +61,12 @@ mod1.on("RecordRetrieved", (data)=>{
     console.log(`
         mod1 has got data back:${data}`);
 });
+
+mod1.on("ConnectionUpdated", (data)=>{
+    console.log(`
+        mod1 has a connection update: ${data}`);
+});
+
 
 mod1.openRecord("id1234");
 

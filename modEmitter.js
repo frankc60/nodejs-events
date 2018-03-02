@@ -6,10 +6,29 @@ function modEmitter (opts){
 }
 util.inherits(modEmitter, events.EventEmitter);
 
-modEmitter.prototype.openRecord = function(opt) {
+
+
+function returnAfterXseconds(x) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve("done");
+      }, (x * 1000) );
+  });
+}
+
+
+
+modEmitter.prototype.openRecord = async function x(opt) {
     //open db and get record, then emit 
+    //is an async function so the await pauses sequentially before getting promise returned. like a wait() but async.
     let newOpt = opt + "-1234567890";
-    let timeout = setTimeout(()=> {this.emit('RecordRetrieved',newOpt);},4000);
-};
+    this.emit('ConnectionUpdated','opened');
+    const a = await returnAfterXseconds(4);
+    this.emit('RecordRetrieved',newOpt);
+    const b = await returnAfterXseconds(2);
+    this.emit('ConnectionUpdated','closed');
+}
+
+
 
 module.exports = modEmitter;
