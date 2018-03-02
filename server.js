@@ -1,6 +1,7 @@
 const events= require('events'),
     util    = require("util"),
-    mod     = require("./modEmitter");
+    mod     = require("./modEmitter"),
+franksEE = require("./eventEmitter");
 
 
 
@@ -69,5 +70,22 @@ mod1.on("ConnectionUpdated", (data)=>{
 
 
 mod1.openRecord("id1234");
+
+//*************************************************************************** */
+// use my custom eventemitter module.
+let ee =  new franksEE();
+//franksEE.EventEmitter
+
+ee.on("change",()=> {
+    console.log("hello world");
+});
+
+ee.on("change",()=> {
+    console.log("cool dude");
+});
+
+
+
+ee.trigger("change");
 
 //*************************************************************************** */
